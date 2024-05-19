@@ -3,22 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First File</title>
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script type="text/javascript">
 
-function Showit() {
-    var myalert = document.getElementById("atext");
-    alert(myalert.value);
-}
+<script>
+    function genQR(){
+        var gapi="https://api.qrserver.com/v1/create-qr-code/?size=";
+        var myimg= document.getElementById("img");
+        var mytext=document.getElementById("qrtext").value;
+        var mysize=document.getElementById("size").value;
+
+        if (mytext!== "" && mysize=="100" ) {
+            myimg.src=gapi +"100x100"+"&data="+mytext;
+            
+            // https://chart.googleapis.com/chart?cht=qr&chs=100x100&chl=hello;
+        }
+        else if (mytext!== "" && mysize=="150" ) {
+            myimg.src=gapi +"150x150"+"&data="+mytext;
+            
+            // https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=hello;
+        }
+        else if (mytext!== "" && mysize=="200" ) {
+            myimg.src=gapi +"200x200"+"&data="+mytext;
+            
+            // https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=hello;
+        }
+
+        else if (mytext!== "" && mysize=="250" ) {
+            myimg.src=gapi +"250x250"+"&data="+mytext;
+            
+            // https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=hello;
+        }
+        else {
+            alert("Please Enter Your Text");
+        }
+    }
 
 </script>
 
-<textarea id="atext" rows="10" cols="20"> 
+<div class="grid">
+<h2 align= "center">QR Code Generator</h2>
 
-</textarea>
-<input type="submit" value="Click Me" onclick="Showit()">
+<centre>
+    <img src="" id="img">
+</centre>
+
+<select id="size">
+    <option value="100">100x100</option>
+    <option value="150" selected>150x150</option>
+    <option value="200">200x200</option>
+    <option value="250">250x250</option>
+</select>
+<br><br>
+
+<textarea placeholder="Enter text here" id="qrtext"></textarea>
+<br><br>
+
+<input type="submit" value="Generator" onclick="genQR()">
+
+<p>Developed By "Kashan Moin"</p>
+</div>
 
 </body>
 </html>
+
+
